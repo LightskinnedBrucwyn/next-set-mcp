@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "next-set",
+  "version": "0.1.0",
+  "description": "Read-only AI coaching access to locally synchronized workout data.",
+  "keywords": ["training", "workouts", "read-only", "local"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Next_Set",
+        "shortDescription": "Read-only coaching from your local workout history.",
+        "longDescription": "Read prescribed workouts and recorded performance through your existing local Coach API. Windows local setup required; no synchronization or write tools.",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "defaultPrompt": ["Review my recent training.", "What workout is next?"]
+      }
+    }
+  }
+}

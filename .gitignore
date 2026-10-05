@@ -1,0 +1,71 @@
+# Private training databases and upstream snapshots
+/data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Local secrets and runtime output
+.env
+.env.*
+*.log
+*.key
+*.pem
+.audit-*.json
+
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local JavaScript dependencies
+node_modules/
+
+# Test, package, and build artifacts
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+build/
+dist/
+*.egg-info/
+
+# Private exports, credentials, and temporary credential transfers
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+*.db-journal
+workout-*.json
+master-exercises-*.json
+*.p12
+*.pfx
+*.secret
+*.secrets
+secrets/
+credentials/
+credentials.*
+secrets.*
+*-key.txt
+*-token.txt
+.secrets/
+.aws/
+.ssh/
+.codex/
+.mcp-auth/
+.mcp-inspector/
+.inspector/
+logs/
+inspector.local.*
+*.local.json
+*.local.toml
+*secret-transfer*
+*key-transfer*
+*token-transfer*
+*.tmp
+*.bak

@@ -1,0 +1,4 @@
+-r requirements.txt
+-r adapters/biolayne/requirements.txt
+-r mcp/requirements-mcp.txt
+jsonschema

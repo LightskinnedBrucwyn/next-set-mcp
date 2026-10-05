@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "next-set": {
+      "type": "stdio",
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-File", "${PLUGIN_ROOT}/scripts/start-mcp.ps1"],
+      "cwd": "${PLUGIN_ROOT}",
+      "env": {
+        "NEXT_SET_SYNC_KEY": "",
+        "NEXT_SET_COACH_READ_KEY": "",
+        "NEXT_SET_COACH_KEY_SOURCE": "windows-user",
+        "NEXT_SET_COACH_API_URL": "http://127.0.0.1:8787",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "next-set": {
+      "type": "stdio",
+      "command": ".venv/Scripts/python.exe",
+      "args": ["-B", "mcp/server.py", "stdio"],
+      "cwd": ".",
+      "env": {
+        "NEXT_SET_COACH_KEY_SOURCE": "windows-user",
+        "NEXT_SET_COACH_API_URL": "http://127.0.0.1:8787",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}

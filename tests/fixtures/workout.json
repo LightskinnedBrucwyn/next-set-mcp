@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1001,
+    "masterWorkoutId": 13,
+    "masterExerciseId": 2,
+    "week": 1,
+    "day": 1,
+    "sets": 2,
+    "reps": 10,
+    "rir": "2",
+    "masterWorkoutExerciseSets": {
+      "11": {
+        "id": 11,
+        "masterWorkoutExerciseId": 1001,
+        "reps": 10,
+        "rir": "2"
+      },
+      "12": {
+        "id": 12,
+        "masterWorkoutExerciseId": 1001,
+        "reps": 10,
+        "rir": "2"
+      }
+    },
+    "workoutExercise": {
+      "id": 2001,
+      "masterWorkoutExerciseId": 1001,
+      "workoutId": 100,
+      "selectedMasterExerciseId": 2,
+      "date": "2025-01-01T12:00:00",
+      "isCompleted": true,
+      "workoutExerciseSets": {
+        "101": {
+          "id": 101,
+          "workoutExerciseId": 2001,
+          "masterWorkoutExerciseSetId": 11,
+          "reps": 10,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        },
+        "102": {
+          "id": 102,
+          "workoutExerciseId": 2001,
+          "masterWorkoutExerciseSetId": 12,
+          "reps": 10,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        }
+      }
+    }
+  },
+  {
+    "id": 1002,
+    "masterWorkoutId": 13,
+    "masterExerciseId": 2,
+    "week": 1,
+    "day": 2,
+    "sets": 2,
+    "reps": 10,
+    "rir": "2",
+    "masterWorkoutExerciseSets": {
+      "21": {
+        "id": 21,
+        "masterWorkoutExerciseId": 1002,
+        "reps": 10,
+        "rir": "2"
+      },
+      "22": {
+        "id": 22,
+        "masterWorkoutExerciseId": 1002,
+        "reps": 10,
+        "rir": "2"
+      }
+    },
+    "workoutExercise": {
+      "id": 2002,
+      "masterWorkoutExerciseId": 1002,
+      "workoutId": 100,
+      "selectedMasterExerciseId": 2,
+      "date": "2025-01-02T12:00:00",
+      "isCompleted": false,
+      "workoutExerciseSets": {
+        "201": {
+          "id": 201,
+          "workoutExerciseId": 2002,
+          "masterWorkoutExerciseSetId": 21,
+          "reps": 10,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        },
+        "202": {
+          "id": 202,
+          "workoutExerciseId": 2002,
+          "masterWorkoutExerciseSetId": 22,
+          "reps": 10,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        }
+      }
+    }
+  },
+  {
+    "id": 1003,
+    "masterWorkoutId": 13,
+    "masterExerciseId": 101,
+    "week": 1,
+    "day": 3,
+    "sets": 2,
+    "reps": 10,
+    "rir": "2",
+    "masterWorkoutExerciseSets": {
+      "31": {
+        "id": 31,
+        "masterWorkoutExerciseId": 1003,
+        "reps": 10,
+        "rir": "2"
+      },
+      "32": {
+        "id": 32,
+        "masterWorkoutExerciseId": 1003,
+        "reps": 10,
+        "rir": "2"
+      }
+    },
+    "workoutExercise": {
+      "id": 2003,
+      "masterWorkoutExerciseId": 1003,
+      "workoutId": 100,
+      "selectedMasterExerciseId": 359,
+      "date": "2025-01-03T12:00:00",
+      "isCompleted": true,
+      "workoutExerciseSets": {
+        "301": {
+          "id": 301,
+          "workoutExerciseId": 2003,
+          "masterWorkoutExerciseSetId": 31,
+          "reps": 0,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        },
+        "302": {
+          "id": 302,
+          "workoutExerciseId": 2003,
+          "masterWorkoutExerciseSetId": 32,
+          "reps": 0,
+          "weight": "20",
+          "isCompleted": true,
+          "isPr": false
+        }
+      }
+    }
+  },
+  {
+    "id": 1004,
+    "masterWorkoutId": 13,
+    "masterExerciseId": 2,
+    "week": 1,
+    "day": 4,
+    "sets": 2,
+    "reps": 10,
+    "rir": "2",
+    "masterWorkoutExerciseSets": {
+      "41": {
+        "id": 41,
+        "masterWorkoutExerciseId": 1004,
+        "reps": 10,
+        "rir": "2"
+      },
+      "42": {
+        "id": 42,
+        "masterWorkoutExerciseId": 1004,
+        "reps": 10,
+        "rir": "2"
+      }
+    }
+  }
+]
