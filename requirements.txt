@@ -1,2 +1,5 @@
-fastapi
-uvicorn[standard]
+-c requirements-lock.txt
+# Read-only API runtime (no source adapter or MCP client).
+-r requirements-models.txt
+fastapi==0.141.1
+uvicorn[standard]==0.53.0

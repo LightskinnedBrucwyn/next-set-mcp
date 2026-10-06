@@ -1,1 +1,3 @@
-requests
+# Optional adapter includes the API and its model dependency.
+-r ../../requirements.txt
+requests==2.34.2

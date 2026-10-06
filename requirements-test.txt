@@ -1,4 +1,5 @@
+# Complete synthetic test/release verification environment.
 -r requirements.txt
--r adapters/biolayne/requirements.txt
 -r mcp/requirements-mcp.txt
-jsonschema
+-r adapters/biolayne/requirements.txt
+jsonschema==4.26.0

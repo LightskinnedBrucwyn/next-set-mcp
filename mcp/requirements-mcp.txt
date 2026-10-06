@@ -1,2 +1,5 @@
+-c ../requirements-lock.txt
+# Standalone MCP runtime; shared models are intentional, not incidental.
+-r ../requirements-models.txt
 mcp==2.3.0
 httpx==0.28.1

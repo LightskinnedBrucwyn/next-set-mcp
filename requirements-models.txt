@@ -1,0 +1,2 @@
+# Shared model dependency used explicitly by MCP and the optional adapter.
+pydantic==2.13.5

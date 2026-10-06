@@ -2,7 +2,7 @@
 
 Workout apps record the sets. Next_Set makes that history available to the tools you use to understand them.
 
-Next_Set is a local, read-only MCP server for structured training data. It gives compatible AI assistants and third-party applications access to exercise history, recorded performance, prescriptions, and the next programmed session—without repeatedly copying numbers or uploading screenshots.
+Next_Set is a local, read-only MCP server for structured training data. It gives compatible AI assistants and third-party applications access to exercise history, recorded performance, prescriptions, and the next programmed sessionâ€”without repeatedly copying numbers or uploading screenshots.
 
 ## What it does
 
@@ -16,8 +16,8 @@ Next_Set provides data and unit normalization. It does not autonomously prescrib
 ## Architecture
 
 ```text
-Optional source adapter → SQLite training schema → read-only API → MCP → compatible client
-                          ↑
+Optional source adapter â†’ SQLite training schema â†’ read-only API â†’ MCP â†’ compatible client
+                          â†‘
                     Synthetic demo
 ```
 
@@ -29,7 +29,7 @@ Requires Python 3.12. Node.js is needed only for userscript tests; the optional 
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-test.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt -r mcp/requirements-mcp.txt -r requirements-test.txt
 .\.venv\Scripts\python.exe scripts/create-demo.py --db data/demo.db
 $env:NEXT_SET_DB = (Resolve-Path data/demo.db).Path
 $env:NEXT_SET_COACH_READ_KEY = [guid]::NewGuid().ToString('N')
@@ -62,3 +62,23 @@ Tests use synthetic fixtures, fake credentials, and temporary databases. Real ex
 Initial Next_Set release candidate, version 0.1.0, derived from the personal Coach plugin 1.0.1. This checkout uses new names and settings and does not modify that installation. See [migration notes](MIGRATION.md).
 
 Before public release: resolve upstream integration permission, choose an open-source license, verify a fresh-machine installation and dependency versions, and validate the optional userscript and reboot recovery. No open-source license has been selected yet.
+
+## Private release verification
+
+After the declared install above, run `python -m pip check`, the full Python and
+JavaScript suites, and `.venv/Scripts/python.exe -B scripts/verify-local.py`.
+The verifier uses a temporary synthetic DB, free loopback port and process-only
+random key; it performs two API restart cycles and all six direct and packaged
+STDIO calls. It needs no saved User credential or local plugin binding. Nothing
+is installed into a personal marketplace by this verifier.
+
+`requirements.txt` is the API runtime; `mcp/requirements-mcp.txt` is the MCP
+runtime; `adapters/biolayne/requirements.txt` is optional; `requirements-test.txt`
+aggregates the verification dependencies. Shared Pydantic is explicit in
+`requirements-models.txt`. `requirements-lock.txt` constrains the tested Windows
+Python 3.12 resolution without installing optional packages by itself. Upgrade
+pins and constraints together only after isolated verification.
+
+See [verification evidence](VERIFICATION.md), [migration](MIGRATION.md), and
+[Windows startup / adapter acceptance](OPERATIONS.md). This remains private:
+license selection and upstream permission/terms are unresolved release gates.

@@ -1,3 +1,8 @@
+param(
+    [string]$ProjectRoot,
+    [string]$ApiUrl = 'http://127.0.0.1:8787',
+    [ValidateSet('windows-user', 'process')][string]$KeySource = 'windows-user'
+)
 $ErrorActionPreference = 'Stop'
 # No profiles, output banners, credential reads, or shell-based argument building.
 # Relay raw bytes without PowerShell parsing or formatting JSON-RPC.
@@ -18,9 +23,12 @@ public static class NextSetStdioRelay {
     }
 }
 '@
-    $bindingPath = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'NextSet\project.json'
-    $binding = Get-Content -LiteralPath $bindingPath -Raw | ConvertFrom-Json
-    $projectRoot = [IO.Path]::GetFullPath([string]$binding.projectRoot)
+    if (-not $ProjectRoot) {
+        $bindingPath = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'NextSet\project.json'
+        $binding = Get-Content -LiteralPath $bindingPath -Raw | ConvertFrom-Json
+        $ProjectRoot = [string]$binding.projectRoot
+    }
+    $projectRoot = [IO.Path]::GetFullPath($ProjectRoot)
     $pythonPath = Join-Path $projectRoot '.venv\Scripts\python.exe'
     $serverPath = Join-Path $projectRoot 'mcp\server.py'
     if (-not (Test-Path -LiteralPath $serverPath -PathType Leaf)) {
@@ -34,7 +42,7 @@ public static class NextSetStdioRelay {
     $startInfo = New-Object Diagnostics.ProcessStartInfo
     $startInfo.FileName = $pythonPath
     # Check in the actual MCP Python process before loading the maintained module.
-    $startInfo.Arguments = '-B -c "import os,runpy,sys; ''NEXT_SET_SYNC_KEY'' not in os.environ or sys.exit(''Sync credential inheritance blocked.''); sys.argv=[''server'',''stdio'']; runpy.run_module(''server'',run_name=''__main__'')"'
+    $startInfo.Arguments = '-B -c "import os,runpy,sys; not ({''NEXT_SET_SYNC_KEY'',''BATCAVE_SYNC_KEY''} & os.environ.keys()) or sys.exit(''Sync credential inheritance blocked.''); sys.argv=[''server'',''stdio'']; runpy.run_module(''server'',run_name=''__main__'')"'
     $startInfo.WorkingDirectory = Join-Path $projectRoot 'mcp'
     $startInfo.UseShellExecute = $false
     $startInfo.CreateNoWindow = $true
@@ -47,8 +55,12 @@ public static class NextSetStdioRelay {
         $value = [Environment]::GetEnvironmentVariable($name, 'Process')
         if ($null -ne $value) { $startInfo.EnvironmentVariables[$name] = $value }
     }
-    $startInfo.EnvironmentVariables['NEXT_SET_COACH_KEY_SOURCE'] = 'windows-user'
-    $startInfo.EnvironmentVariables['NEXT_SET_COACH_API_URL'] = 'http://127.0.0.1:8787'
+    $startInfo.EnvironmentVariables['NEXT_SET_COACH_KEY_SOURCE'] = $KeySource
+    if ($KeySource -eq 'process') {
+        if (-not $env:NEXT_SET_COACH_READ_KEY) { throw 'Read key missing from process environment.' }
+        $startInfo.EnvironmentVariables['NEXT_SET_COACH_READ_KEY'] = $env:NEXT_SET_COACH_READ_KEY
+    }
+    $startInfo.EnvironmentVariables['NEXT_SET_COACH_API_URL'] = $ApiUrl
     $startInfo.EnvironmentVariables['PYTHONIOENCODING'] = 'utf-8'
     $startInfo.EnvironmentVariables['PYTHONDONTWRITEBYTECODE'] = '1'
     $child = [Diagnostics.Process]::Start($startInfo)
