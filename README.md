@@ -2,7 +2,7 @@
 
 Workout apps record the sets. Next_Set makes that history available to the tools you use to understand them.
 
-Next_Set is a local, read-only MCP server for structured training data. It gives compatible AI assistants and third-party applications access to exercise history, recorded performance, prescriptions, and the next programmed sessionâ€”without repeatedly copying numbers or uploading screenshots.
+Next_Set is a local, read-only MCP server for structured training data. It gives AI assistants and compatible applications access to workout history, prescriptions, exercise progression, and upcoming sessions through a normalized training-data layer. BioLayne is currently supported through an optional, unofficial adapter and is not affiliated with or endorsed by Next_Set.
 
 ## What it does
 
